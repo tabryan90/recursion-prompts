@@ -25,29 +25,39 @@ let sum = function(array) {
 // 3. Sum all numbers in an array containing nested arrays.
 // arraySum([1,[2,3],[[4]],5]); // 15
 let arraySum = function(array) {
-    let result = 0;
-    if (array.length === 0) return 0;
 
-    for ( let i = 0; i < array.length; i++ ) {
-        let num = array[i];
-        if (Array.isArray(array)) {
-            arraySum(array[i])
-        } else {
-            result += num;
-        }
-    }
-};
+    let sum = 0;
+    array.forEach((item) => {
+      if(Array.isArray(item)) {
+       sum += arraySum(item);
+      } else {
+      sum += item;
+      }
+    })
+    return sum;
+  };
 
 // 4. Check if a number is even.
 // isEven(2) // true
 // isEven(9) // false
 let isEven = function(n) {
+    n = Math.abs(n);
+
+    if (n == 0) {
+        return true;
+    } else if (n == 1) {
+        return false;
+    } else {
+        return isEven(n - 2);
+    }
 };
 
 // 5. Sum all integers below a given integer.
 // sumBelow(10); // 45
 // sumBelow(7); // 21
 let sumBelow = function(n) {
+    if ( n <= 1 ) return 0;
+    return (n - 1) + sumBelow(n - 1);
 };
 
 // 6. Get the integers within a range (x, y).
