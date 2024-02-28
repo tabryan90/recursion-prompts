@@ -1,30 +1,23 @@
-// 3. Sum all numbers in an array containing nested arrays.
-// arraySum([1,[2,3],[[4]],5]); // 15
+// 6. Get the integers within a range (x, y).
+// range(2,9); // [3,4,5,6,7,8]
 
-let arraySum = function(array) {
+debugger
+let range = function(x, y) {
 
+    if ( x - y === 1 || x - y === 0 || x - y === -1 || y - x === 1 || y - x === 0 || y - x === -1  ) {
+        return [];
+    }
 
+    if ( x < y ) {
+        return [x + 1, ...range(x + 1, y)];
+    } else if ( x > y ) {
+        return [...range(x, y + 1), y + 1];
+    }
 
-
-
-
-
-    // if (array.length === 0) return 0;
-
-    // flatten();
-    // const flatten = function(array) {
-    //     let result = [];
-    //     for ( let i = 0; i < array.length; i++ ) {
-    //         let num = array[i];
-    //         if (Array.isArray(num)) {
-    //             result.push(...flatten(num));
-    //         } else {
-    //             result.push(num);
-    //         }
-    //     }
-    // }
-
-    // return array + arraySum(array.slice(1));
 };
 
-console.log(arraySum([1,[2,3],[[4]],5])); // 15
+console.log(range(2, 9)); // [3,4,5,6,7,8]
+console.log(range(7, 2)); // [6,5,4,3]
+
+console.log(range(3, -3)); // [2,1,0,-1,-2]
+console.log(range(-9, -2)); // [-3,-4,-5,-6,-7,-8]
