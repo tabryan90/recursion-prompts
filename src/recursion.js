@@ -102,6 +102,15 @@ let exponent = function(base, exp) {
 // powerOfTwo(16); // true
 // powerOfTwo(10); // false
 let powerOfTwo = function(n) {
+    if ( n === 0 ) return false;
+
+    if ( n === 1 ) return true;
+
+    if ( n % 2 !== 0 && n !== 1 ) {
+        return false;
+    } else {
+        return powerOfTwo( n / 2 );
+    }
 };
 
 // 9. Write a function that reverses a string.
