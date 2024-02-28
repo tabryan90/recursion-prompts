@@ -1,23 +1,17 @@
-// 6. Get the integers within a range (x, y).
-// range(2,9); // [3,4,5,6,7,8]
-
+// 7. Compute the exponent of a number.
+// The exponent of a number says how many times the base number is used as a factor.
+// 8^2 = 8 x 8 = 64. Here, 8 is the base and 2 is the exponent.
+// exponent(4,3); // 64
 debugger
-let range = function(x, y) {
+let exponent = function(base, exp) {
+    if ( exp === 0 ) return 1;
 
-    if ( x - y === 1 || x - y === 0 || x - y === -1 || y - x === 1 || y - x === 0 || y - x === -1  ) {
-        return [];
+    if ( exp < 0 ) {
+        return 1/(base * exponent(base, -exp - 1));
+    } else if ( exp > 0 ) {
+        return base * exponent(base, exp - 1);
     }
-
-    if ( x < y ) {
-        return [x + 1, ...range(x + 1, y)];
-    } else if ( x > y ) {
-        return [...range(x, y + 1), y + 1];
-    }
-
 };
 
-console.log(range(2, 9)); // [3,4,5,6,7,8]
-console.log(range(7, 2)); // [6,5,4,3]
-
-console.log(range(3, -3)); // [2,1,0,-1,-2]
-console.log(range(-9, -2)); // [-3,-4,-5,-6,-7,-8]
+// console.log(exponent(4,3)); // 64
+console.log(exponent(4,-2)); // 0.0625
