@@ -1,7 +1,39 @@
-// 8. Determine if a number is a power of two.
-// powerOfTwo(1); // true
-// powerOfTwo(16); // true
-// powerOfTwo(10); // false
+// 10. Write a function that determines if a string is a palindrome.
+// palindrome("koko") // false
+// palindrome("rotor") // true
+// palindrome("wow") // true
+debugger
+let palindrome = function(string) {
+    if ( string.length === 1 ) return true;
+    if ( string.length % 2 === 0 ) return false;
+
+    if ( string[0].toLowerCase() === string[string.length - 1].toLowerCase() ) {
+        return palindrome(string.slice(1, string.length - 1))
+    } else {
+        return false;
+    }
+
+};
+
+// console.log(palindrome("koko")) // false
+// console.log(palindrome("rotor")) // true
+// console.log(palindrome("wow")) // true
+// console.log(palindrome("sAip puaki v iKaup Pias")) // true
+
+console.log(palindrome("orangutan")) // false
+
+
+/*
+
+let reverse = function(string) {
+    if ( string.length === 0 ) {
+        return string;
+      }
+
+      return reverse(string.slice(1)) + string[0];
+};
+
+
 let powerOfTwo = function(n) {
     if ( n === 0 ) return false;
 
@@ -14,25 +46,5 @@ let powerOfTwo = function(n) {
     }
 };
 
-console.log(powerOfTwo(1)); // true
-console.log(powerOfTwo(16)); // true
-console.log(powerOfTwo(10)); // false
-console.log(powerOfTwo(0)); // false
-console.log(powerOfTwo(270)); // false
 
-
-/*
-
-let isEven = function(n) {
-    n = Math.abs(n);
-
-    if (n == 0) {
-        return true;
-    } else if (n == 1) {
-        return false;
-    } else {
-        return isEven(n - 2);
-    }
-};
-
- */
+*/

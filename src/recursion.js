@@ -116,6 +116,11 @@ let powerOfTwo = function(n) {
 // 9. Write a function that reverses a string.
 // reverse("hello"); // olleh
 let reverse = function(string) {
+    if ( string.length === 0 ) {
+        return string;
+      }
+
+      return reverse(string.slice(1)) + string[0];
 };
 
 // 10. Write a function that determines if a string is a palindrome.
@@ -123,6 +128,15 @@ let reverse = function(string) {
 // palindrome("rotor") // true
 // palindrome("wow") // true
 let palindrome = function(string) {
+    if ( string.length === 1 ) return true;
+    if ( string.length % 2 === 0 ) return false;
+
+    if ( string[0].toLowerCase() === string[string.length - 1].toLowerCase() ) {
+        return palindrome(string.slice(1, string.length - 1))
+    } else {
+        return false;
+    }
+
 };
 
 // 11. Write a function that returns the remainder of x divided by y without using the
