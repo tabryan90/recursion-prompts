@@ -1,50 +1,56 @@
-// 10. Write a function that determines if a string is a palindrome.
-// palindrome("koko") // false
-// palindrome("rotor") // true
-// palindrome("wow") // true
+// 11. Write a function that returns the remainder of x divided by y without using the
+// modulo (%) operator.
+// modulo(5,2) // 1
+// modulo(17,5) // 2
+// modulo(22,6) // 4
 debugger
-let palindrome = function(string) {
-    if ( string.length === 1 ) return true;
-    if ( string.length % 2 === 0 ) return false;
+let modulo = function(x, y) {
+    if ( x === 0 ) return 0;
+    if ( x === 0 && y === 0 ) return NaN;
 
-    if ( string[0].toLowerCase() === string[string.length - 1].toLowerCase() ) {
-        return palindrome(string.slice(1, string.length - 1))
-    } else {
-        return false;
+    if ( (x < 0 && y < 0) && x >=y ) return x;
+    if ( (x > 0 && y > 0) && x <= y ) return x;
+
+    if ( x > 0 && y > 0 ) {
+        return modulo(x - y, y);
+
+    } else if ( (x < 0 && y < 0) && x > y ) {
+        return x;
+
+    } else if ( x > 0 && y < 0 ) {
+
+    } else if ( (x < 0 && y > 0) && x < y ) {
+        return modulo(x - y, y);
+
+    } else if ( (x < 0 && y < 0) && x < y ) {
+        return modulo(x - y, y);
     }
 
 };
 
-// console.log(palindrome("koko")) // false
-// console.log(palindrome("rotor")) // true
-// console.log(palindrome("wow")) // true
-// console.log(palindrome("sAip puaki v iKaup Pias")) // true
+// console.log(modulo(5,2)) // 1
+// console.log(modulo(17,5)) // 2
+// console.log(modulo(22,6)) // 4
 
-console.log(palindrome("orangutan")) // false
+console.log(modulo(-79, 82)) //
+// console.log(modulo(-275, -502)) // passed
+// console.log(modulo(-275, -274)) // passed
 
+// console.log(modulo(-8, 2))
+
+console.log(-79 % 82); // -79 - if x is less than y return x
+// console.log(-275 % -502); // -275 - if both are negative and x is less than y return -x
+// console.log(-275 % -274); // -1 - if both are positive and x is GREATER than y return the -remainder
+console.log(-4 % 2)
 
 /*
+let exponent = function(base, exp) {
+    if ( exp === 0 ) return 1;
 
-let reverse = function(string) {
-    if ( string.length === 0 ) {
-        return string;
-      }
-
-      return reverse(string.slice(1)) + string[0];
-};
-
-
-let powerOfTwo = function(n) {
-    if ( n === 0 ) return false;
-
-    if ( n === 1 ) return true;
-
-    if ( n % 2 !== 0 && n !== 1 ) {
-        return false;
-    } else {
-        return powerOfTwo( n / 2 );
+    if ( exp < 0 ) {
+        return 1/(base * exponent(base, -exp - 1));
+    } else if ( exp > 0 ) {
+        return base * exponent(base, exp - 1);
     }
 };
-
-
 */

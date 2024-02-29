@@ -10,6 +10,7 @@ let factorial = function(n) {
     if ( n < 0 ) return null;
     if ( n <= 1 ) return 1;
     return n * factorial(n - 1);
+
 };
 
 // 2. Compute the sum of an array of integers.
@@ -20,6 +21,7 @@ let sum = function(array) {
     if (array.length === 0) return 0;
 
     return result + sum(array.slice(1));
+
 };
 
 // 3. Sum all numbers in an array containing nested arrays.
@@ -35,7 +37,8 @@ let arraySum = function(array) {
       }
     })
     return sum;
-  };
+
+};
 
 // 4. Check if a number is even.
 // isEven(2) // true
@@ -50,6 +53,7 @@ let isEven = function(n) {
     } else {
         return isEven(n - 2);
     }
+
 };
 
 // 5. Sum all integers below a given integer.
@@ -145,6 +149,24 @@ let palindrome = function(string) {
 // modulo(17,5) // 2
 // modulo(22,6) // 4
 let modulo = function(x, y) {
+    if ( x === 0 ) return 0;
+    if ( x === 0 && y === 0 ) return NaN;
+
+    if ( (x < 0 && y < 0) && x >=y ) return x;
+    if ( (x > 0 && y > 0) && x <= y ) return x;
+
+    if ( x > 0 && y > 0 ) {
+        return modulo(x - y, y);
+    } else if ( (x < 0 && y < 0) && x > y ) {
+        return x;
+    } else if ( x > 0 && y < 0 ) {
+
+    } else if ( (x < 0 && y > 0) && x < y ) {
+        return modulo(x + y, y);
+    } else if ( (x < 0 && y < 0) && x < y ) {
+        return modulo(x - y, y);
+    }
+
 };
 
 // 12. Write a function that multiplies two numbers without using the * operator or
